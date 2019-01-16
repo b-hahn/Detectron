@@ -84,7 +84,7 @@ def convert_coco_stuff_mat(data_dir, out_dir):
                 images.append(image)
         ann_dict['images'] = images
         print("Num images: %s" % len(images))
-        with open(os.path.join(out_dir, json_name % data_set), 'wb') as outfile:
+        with open(os.path.join(out_dir, json_name % data_set), 'w') as outfile:
             outfile.write(json.dumps(ann_dict))
 
 
@@ -141,6 +141,7 @@ def convert_cityscapes_instance_only(
         images = []
         annotations = []
         ann_dir = os.path.join(data_dir, ann_dir)
+        print(ann_dir)
         for root, _, files in os.walk(ann_dir):
             for filename in files:
                 if filename.endswith(ends_in % data_set.split('_')[0]):
@@ -205,7 +206,7 @@ def convert_cityscapes_instance_only(
         print("Num categories: %s" % len(categories))
         print("Num images: %s" % len(images))
         print("Num annotations: %s" % len(annotations))
-        with open(os.path.join(out_dir, json_name % data_set), 'wb') as outfile:
+        with open(os.path.join(out_dir, json_name % data_set), 'w') as outfile:
             outfile.write(json.dumps(ann_dict))
 
 
